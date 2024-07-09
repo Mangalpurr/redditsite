@@ -20,7 +20,6 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 300px;
         }
         h1 {
             color: #333;
@@ -65,15 +64,10 @@
             <button onclick="pasteAndSearch()">Paste and Search</button>
         </div>
         <div id="result" class="result"></div>
-        <hr>
-        <h2>Update Scammer List</h2>
-        <input type="text" id="newUsername" placeholder="Add new username">
-        <button onclick="addScammer()">Add to List</button>
     </div>
 
     <script>
-        // Default scammer list
-        const defaultScammerList = [
+        const scammerList = [
             "Biggeshat",
             "pastrum_",
             "owes1",
@@ -102,13 +96,6 @@
             "rowan_jackson131"
         ];
 
-        // Initialize the scammer list from local storage or use default
-        let scammerList = JSON.parse(localStorage.getItem('scammerList')) || defaultScammerList;
-
-        function saveScammerList() {
-            localStorage.setItem('scammerList', JSON.stringify(scammerList));
-        }
-
         function checkScammer() {
             const username = document.getElementById("username").value.trim();
             const resultDiv = document.getElementById("result");
@@ -131,20 +118,6 @@
                 checkScammer();
             } catch (err) {
                 console.error('Failed to read clipboard contents: ', err);
-            }
-        }
-
-        function addScammer() {
-            const newUsername = document.getElementById("newUsername").value.trim();
-            if (newUsername && !scammerList.includes(newUsername)) {
-                scammerList.push(newUsername);
-                saveScammerList();
-                alert(`${newUsername} has been added to the scammer list.`);
-                document.getElementById("newUsername").value = '';
-            } else if (scammerList.includes(newUsername)) {
-                alert(`${newUsername} is already in the scammer list.`);
-            } else {
-                alert('Please enter a valid username.');
             }
         }
     </script>
