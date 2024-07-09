@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit Scammer Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .result.scammer {
+            color: #d9534f;
+        }
+        .result.not-scammer {
+            color: #5cb85c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reddit Scammer Checker</h1>
+        <input type="text" id="username" placeholder="Enter Reddit username">
+        <div>
+            <button onclick="checkScammer()">Search</button>
+            <button onclick="pasteAndSearch()">Paste and Search</button>
+        </div>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        const scammerList = [
+            "Biggeshat",
+            "pastrum_",
+            "owes1",
+            "heykay15",
+            "magic_mike2017",
+            "bigdizizzle",
+            "thedreamalchemist",
+            "laimis96",
+            "voltzofficial",
+            "domrani",
+            "IceProfessional4313",
+            "snowcritter",
+            "_tracksuitmafia",
+            "Ok_Shoulder2368",
+            "spacedude997",
+            "ItsMiggity",
+            "xosinsaba",
+            "roadrunnercj",
+            "arvasee",
+            "SaltyCarpet",
+            "daniel_a112",
+            "Towboat_",
+            "bloodgods",
+            "WildBicycle3075",
+            "MidnightBulky9048",
+            "rowan_jackson131"
+        ];
+
+        function checkScammer() {
+            const username = document.getElementById("username").value.trim();
+            const resultDiv = document.getElementById("result");
+
+            if (scammerList.includes(username)) {
+                resultDiv.textContent = `${username} is a known scammer.`;
+                resultDiv.classList.remove("not-scammer");
+                resultDiv.classList.add("scammer");
+            } else {
+                resultDiv.textContent = `${username} is not on the scammer list.`;
+                resultDiv.classList.remove("scammer");
+                resultDiv.classList.add("not-scammer");
+            }
+        }
+
+        async function pasteAndSearch() {
+            try {
+                const text = await navigator.clipboard.readText();
+                document.getElementById("username").value = text.trim();
+                checkScammer();
+            } catch (err) {
+                console.error('Failed to read clipboard contents: ', err);
+            }
+        }
+    </script>
+</body>
+</html>
