@@ -8,13 +8,13 @@ Google Sheets Integration: The tool fetches data from a Google Sheets document t
 Case-Insensitive Search: The tool performs a case-insensitive search to ensure accuracy regardless of how the username is entered.
 
 How to Use
-[Visit]([https://mangalpurr.github.io/redditsite/]) the site at Reddit Scammer Checker.
+Visit https://mangalpurr.github.io/redditsite the site at Reddit Scammer Checker.
 Enter the Reddit username you want to check into the search field.
 Click the "Check Username" button.
 The tool will display a message indicating whether the entered username is a known scammer or not.
 
 Data Source
-The list of known scammer usernames is maintained in a Google Sheets document. You can view the list [here]([https://docs.google.com/spreadsheets/d/1z6k5YejlCWtuvfuND4ZgTU_dz31NbCqIUVO4AXln130/edit?usp=sharing]).
+The list of known scammer usernames is maintained in a Google Sheets document. You can view the list https://docs.google.com/spreadsheets/d/1z6k5YejlCWtuvfuND4ZgTU_dz31NbCqIUVO4AXln130/edit?usp=sharing
 
 Contributing
 If you would like to contribute to this project, please follow these steps:
